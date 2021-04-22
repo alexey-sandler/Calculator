@@ -28,14 +28,36 @@ public class RomChar implements Operations {
                 return convertResultToRomes(n - remainder, 0) + roman9Symbols[(remainder + 1) * -1];
             }
         }
-        //Возможность вывести отрицательное римское число
-        if (n > 0) {
-            n = n - 10;
-            return convertResultToRomes(n,0) + "X";
-        } else if (n < 0) {
+
+        if (n < 0) {
             n = n + 10;
             return convertResultToRomes(n,0) + "X";
-        }   else {
+        }
+        if (n > 0 && n < 40) {
+            n = n - 10;
+            return convertResultToRomes(n, 0) + "X";
+        }
+        if (n >= 40 && n < 50) {
+                return "XL";
+        }
+        if (n >= 50 && n < 60) {
+            return  "L";
+        }
+        if (n >= 60 && n < 70) {
+            return "LX";
+        }
+        if (n >= 70 && n < 80) {
+            return "LXX";
+        }
+        if (n >= 80 && n < 90) {
+            return "LXXX";
+        }
+        if (n >= 90 && n < 100) {
+            return "XC";
+        }
+        if (n == 100) {
+            return "C";
+        } else {
             return sign;
         }
     }
@@ -92,12 +114,20 @@ public class RomChar implements Operations {
                 case 'X':
                     valuesInt[i] = 10;
                     break;
+                case 'L':
+                    valuesInt[i] = 50;
+                    break;
+                case 'C':
+                    valuesInt[i] = 100;
+                    break;
                 default:
                     out.println("Invalid character contained. Correct entry of Roman numerals:"
                             + "\n" +
                             "I = 1" + "\n" +
                             "V = 5" + "\n" +
-                            "X = 10");
+                            "X = 10" + "\n" +
+                            "L = 50" + "\n" +
+                            "C = 100");
                     break;
             }
         }
